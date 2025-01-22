@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <marquee><h1 style="font-size: xxx-large;">WELCOME TO WORLD OF CSS</h1></marquee>
+    </div>
+    <div id="image">
+        <img id="img1" src="dp.jpg" >
+        <img id="img2" src="pd.webp">
+    
+    </div>
+    <div id="flex" >
+        <div id="flex1">
+            Properties
+            <ul>
+                <li>Color</li>
+                <li>Line height</li>
+            </ul>
+
+        </div>
+        <div id="flex2">
+            What is CSS?<br><br>
+            CSS stand for Cascading Style Sheets
+        </div>
+    </div>
+
+</body>
+<style>
+    #header
+    {
+        background-color: #f2f2f2;
+    width: 100dvw;
+    height: 20dvh;
+    align-content: center;
+    justify-items: center;
+    color: #ea0a0a;
+    }
+    #image
+    {
+        background-color: #8f8a8a;
+        width: 100dvw;
+        height: 60dvh;
+    }
+    #img1
+    {
+    position: absolute;
+    height: 280px;
+    width: 400px;
+    padding: 10px;
+    animation: anim1 6s infinite;
+    }
+    #img2
+    {
+    position: absolute;
+    height: 280px;
+    width: 400px;
+    padding: 10px;
+    animation: anim 6s infinite;
+    }
+    #flex
+    {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    @keyframes anim
+    {
+        0%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+    @keyframes anim1
+    {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+    #flex1
+    {
+        flex: 1;
+    }
+    #flex2
+    {
+        flex: 3;
+    }
+</style>
+</html>

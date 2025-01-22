@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    .container
+    {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-items: center;
+    }
+    button
+    {
+      background-color: aquamarine;
+      color: black;
+      width: 90px;
+      height: 20px;
+      cursor: pointer;
+    }
+    button:hover
+    {
+      background-color: rgb(12, 12, 12);
+      color: rgb(236, 236, 240);
+      cursor: pointer;
+    }
+
+    th, td
+    {
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <div id="calendar">
+    <table border="2" style="border-collapse: collapse; padding:30px">
+      <thead>
+        <tr>
+          <th colspan="7"><button id="prev">&lt;Prev</button>&nbsp;&nbsp;&nbsp;<span id="my"></span>&nbsp;&nbsp;&nbsp;<button id="next">Next&gt;</button></th>
+        </tr>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thrs</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody id="cbody"></tbody>
+    </table>
+  </div>
+  </div>
+  <script>
+    const my=document.getElementById("my");
+    const cbody=document.getElementById("cbody");
+    const pbtn = document.getElementById("prev");
+    const nbtn = document.getElementById("next");
+
+    let current = new Date();
+
+  function render(date){
+
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    mnames=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    my.textContent = `${mnames[month]} ${year}`;
+
+    cbody.innerHTML = "";
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
+
+    let day=1;
+    for(let i =0;i<6;i++)
+    {
+      const row = document.createElement("tr");
+      for(let j=0;j<7;j++)
+      {
+        const cell = document.createElement("td");
+        if(i==0 && j<firstDay || day>lastDate)
+          {
+            cell.textContent = "";
+          }
+          else
+          {
+            cell.textContent = day;
+            day++;
+          }
+          row.append(cell);
+      }
+      cbody.append(row);
+    }
+
+  }
+  function changeMonth(offset) {
+    current.setMonth(current.getMonth() + offset);
+    render(current);
+  } 
+  render(current)
+
+  pbtn.addEventListener("click", () => changeMonth(-1));
+  nbtn.addEventListener("click", () => changeMonth(1));
+  </script>
+  
+</body>
+</html>
